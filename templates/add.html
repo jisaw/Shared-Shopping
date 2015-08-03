@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title%}
+Shared Shopping -- Add List
+{% endblock %}
+
+{% block content %}
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <b>Add New List</b>
+    </div>
+    <div class="panel-body">
+        <form action="" method="post">
+          {{form.hidden_tag()}}
+            <div class="form-group">
+                <label for="addList">List Title</label>
+                {{ form.listTitle(size=80) }}
+                <button type="submit">submit</button>
+            </div>
+        </form>
+        {% if form.listTitle.errors %}
+          <ul>
+          {% for error in form.listTitle.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
