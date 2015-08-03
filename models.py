@@ -21,5 +21,6 @@ class Item(db.Model):
     removed = db.Column(db.Boolean, default=False)
 
 class ListPermission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     list_id = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, nullable=False)

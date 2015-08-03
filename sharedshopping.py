@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from logging import DEBUG
 
 from forms import ListForm
+import models
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -43,9 +44,10 @@ def server_error(e):
 
 def store_list(form):
     # Store list through model
-    newList = form.listTitle.data
-    app.logger.debug("New List Created -> {}".format(str(newList)))
-    flash("New List Created -> {}".format(str(newList)))
+    list = models.List(name=form.listTitle.data, creator_id=1)
+    db.session.add(list)
+    db.session.commit()
+    flash("New List Created -> {}".format(str(list.name)))
 
 
 
